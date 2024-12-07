@@ -1,29 +1,29 @@
+/* USER CODE BEGIN Header */
 /**
  ******************************************************************************
   * @file    bsp_driver_sdram.h (based on stm32756g_eval_sdram.h)
-  * @brief   This file contains the common defines and functions prototypes for  
+  * @brief   This file contains the common defines and functions prototypes for
   *          the bsp_driver_sdram.c driver.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
-  
+/* USER CODE END Header */
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __STM32F7_SDRAM_H
 #define __STM32F7_SDRAM_H
 
 #ifdef __cplusplus
  extern "C" {
-#endif 
+#endif
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
@@ -99,11 +99,9 @@ uint8_t BSP_SDRAM_WriteData_DMA(uint32_t uwStartAddress, uint32_t *pData, uint32
 uint8_t BSP_SDRAM_Sendcmd(FMC_SDRAM_CommandTypeDef *SdramCmd);
 
 /* USER CODE END 0 */
-   
+
 #ifdef __cplusplus
 }
 #endif
 
 #endif /* __STM32F7_SDRAM_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

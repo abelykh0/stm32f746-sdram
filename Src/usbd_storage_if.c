@@ -172,8 +172,8 @@ USBD_StorageTypeDef USBD_Storage_Interface_fops_FS =
 
 /* Private functions ---------------------------------------------------------*/
 /**
-  * @brief  Initializes over USB FS IP
-  * @param  lun:
+  * @brief  Initializes the storage unit (medium) over USB FS IP
+  * @param  lun: Logical unit number.
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 int8_t STORAGE_Init_FS(uint8_t lun)
@@ -184,10 +184,10 @@ int8_t STORAGE_Init_FS(uint8_t lun)
 }
 
 /**
-  * @brief  .
-  * @param  lun: .
-  * @param  block_num: .
-  * @param  block_size: .
+  * @brief  Returns the medium capacity.
+  * @param  lun: Logical unit number.
+  * @param  block_num: Number of total block number.
+  * @param  block_size: Block size.
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)
@@ -200,8 +200,8 @@ int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_
 }
 
 /**
-  * @brief  .
-  * @param  lun: .
+  * @brief   Checks whether the medium is ready.
+  * @param  lun:  Logical unit number.
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 int8_t STORAGE_IsReady_FS(uint8_t lun)
@@ -212,8 +212,8 @@ int8_t STORAGE_IsReady_FS(uint8_t lun)
 }
 
 /**
-  * @brief  .
-  * @param  lun: .
+  * @brief  Checks whether the medium is write protected.
+  * @param  lun: Logical unit number.
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)
@@ -224,8 +224,11 @@ int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)
 }
 
 /**
-  * @brief  .
-  * @param  lun: .
+  * @brief  Reads data from the medium.
+  * @param  lun: Logical unit number.
+  * @param  buf: data buffer.
+  * @param  blk_addr: Logical block address.
+  * @param  blk_len: Blocks number.
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
@@ -237,8 +240,11 @@ int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 }
 
 /**
-  * @brief  .
-  * @param  lun: .
+  * @brief  Writes data into the medium.
+  * @param  lun: Logical unit number.
+  * @param  buf: data buffer.
+  * @param  blk_addr: Logical block address.
+  * @param  blk_len: Blocks number.
   * @retval USBD_OK if all operations are OK else USBD_FAIL
   */
 int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
@@ -250,9 +256,9 @@ int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t b
 }
 
 /**
-  * @brief  .
+  * @brief  Returns the Max Supported LUNs.
   * @param  None
-  * @retval .
+  * @retval Lun(s) number.
   */
 int8_t STORAGE_GetMaxLun_FS(void)
 {
@@ -273,4 +279,3 @@ int8_t STORAGE_GetMaxLun_FS(void)
   * @}
   */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
