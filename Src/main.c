@@ -38,7 +38,8 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 uint32_t L8Clut[256];
- uint8_t* VideoRam = (uint8_t*)VideoRamAddress;
+uint8_t VideoRam[720 * 400]; //(uint8_t*)VideoRamAddress;
+uint32_t VideoRamAddress = (uint32_t)VideoRam;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/

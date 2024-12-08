@@ -44,14 +44,14 @@ void MX_LTDC_Init(void)
   hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AH;
   hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AH;
   hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
-  hltdc.Init.HorizontalSync = 39;
-  hltdc.Init.VerticalSync = 4;
-  hltdc.Init.AccumulatedHBP = 259;
-  hltdc.Init.AccumulatedVBP = 24;
-  hltdc.Init.AccumulatedActiveW = 1539;
-  hltdc.Init.AccumulatedActiveH = 744;
-  hltdc.Init.TotalWidth = 1649;
-  hltdc.Init.TotalHeigh = 749;
+  hltdc.Init.HorizontalSync = 107;
+  hltdc.Init.VerticalSync = 1;
+  hltdc.Init.AccumulatedHBP = 164;
+  hltdc.Init.AccumulatedVBP = 37;
+  hltdc.Init.AccumulatedActiveW = 884;
+  hltdc.Init.AccumulatedActiveH = 437;
+  hltdc.Init.TotalWidth = 899;
+  hltdc.Init.TotalHeigh = 448;
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
   hltdc.Init.Backcolor.Red = 0;
@@ -98,8 +98,8 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
-    PeriphClkInitStruct.PLLSAI.PLLSAIN = 297;
-    PeriphClkInitStruct.PLLSAI.PLLSAIR = 4;
+    PeriphClkInitStruct.PLLSAI.PLLSAIN = 85;
+    PeriphClkInitStruct.PLLSAI.PLLSAIR = 3;
     PeriphClkInitStruct.PLLSAI.PLLSAIQ = 2;
     PeriphClkInitStruct.PLLSAI.PLLSAIP = RCC_PLLSAIP_DIV2;
     PeriphClkInitStruct.PLLSAIDivQ = 1;

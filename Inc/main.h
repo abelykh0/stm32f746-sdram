@@ -60,7 +60,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 
 /* USER CODE BEGIN Private defines */
-#define VideoRamAddress 0xD0000000
+//#define VideoRamAddress 0xD0000000
+extern uint32_t VideoRamAddress;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
