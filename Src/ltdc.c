@@ -40,18 +40,18 @@ void MX_LTDC_Init(void)
 
   /* USER CODE END LTDC_Init 1 */
   hltdc.Instance = LTDC;
-  hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
-  hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
+  hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AH;
+  hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AH;
   hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AL;
   hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
-  hltdc.Init.HorizontalSync = 135;
-  hltdc.Init.VerticalSync = 5;
-  hltdc.Init.AccumulatedHBP = 295;
-  hltdc.Init.AccumulatedVBP = 34;
-  hltdc.Init.AccumulatedActiveW = 1319;
-  hltdc.Init.AccumulatedActiveH = 802;
-  hltdc.Init.TotalWidth = 1343;
-  hltdc.Init.TotalHeigh = 805;
+  hltdc.Init.HorizontalSync = 39;
+  hltdc.Init.VerticalSync = 4;
+  hltdc.Init.AccumulatedHBP = 259;
+  hltdc.Init.AccumulatedVBP = 24;
+  hltdc.Init.AccumulatedActiveW = 1539;
+  hltdc.Init.AccumulatedActiveH = 744;
+  hltdc.Init.TotalWidth = 1649;
+  hltdc.Init.TotalHeigh = 749;
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
   hltdc.Init.Backcolor.Red = 0;
@@ -69,8 +69,8 @@ void MX_LTDC_Init(void)
   pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
   pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
   pLayerCfg.FBStartAdress = 0xD0000000;
-  pLayerCfg.ImageWidth = 1024;
-  pLayerCfg.ImageHeight = 768;
+  pLayerCfg.ImageWidth = 1280;
+  pLayerCfg.ImageHeight = 720;
   pLayerCfg.Backcolor.Blue = 0;
   pLayerCfg.Backcolor.Green = 0;
   pLayerCfg.Backcolor.Red = 0;
@@ -98,12 +98,12 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
   /** Initializes the peripherals clock
   */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
-    PeriphClkInitStruct.PLLSAI.PLLSAIN = 90;
+    PeriphClkInitStruct.PLLSAI.PLLSAIN = 297;
     PeriphClkInitStruct.PLLSAI.PLLSAIR = 2;
     PeriphClkInitStruct.PLLSAI.PLLSAIQ = 2;
     PeriphClkInitStruct.PLLSAI.PLLSAIP = RCC_PLLSAIP_DIV2;
     PeriphClkInitStruct.PLLSAIDivQ = 1;
-    PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_2;
+    PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_4;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
       Error_Handler();
