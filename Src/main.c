@@ -37,7 +37,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+uint32_t L8Clut[256];
+ uint8_t* VideoRam = (uint8_t*)VideoRamAddress;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -71,7 +72,26 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+	for (uint32_t i = 0; i < 256; i++)
+	{
+		// xxBBGGRR > ARBG
+		uint32_t a = 0xff000000;
 
+		uint8_t paletteR = i & 0x0003;
+		uint32_t r = 85 * paletteR;
+		r <<= 16;
+
+		uint8_t paletteG = i & 0x000C;
+		paletteG >>= 2;
+		uint32_t g = 85 * paletteG;
+		g <<= 8;
+
+		uint8_t paletteB = i & 0x0030;
+		paletteB >>= 4;
+		uint32_t b = 85 * paletteB;
+
+		L8Clut[i] = a | r | g | b;
+	}
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
@@ -98,7 +118,6 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -109,11 +128,31 @@ int main(void)
   MX_FATFS_Init();
   MX_LTDC_Init();
   /* USER CODE BEGIN 2 */
-	f_mount(&SDRAMDISKFatFS, SDRAMDISKPath, 0);
-	char buf[512];
-	f_mkfs(SDRAMDISKPath, FM_FAT, 512, buf, sizeof(buf));
-	f_setlabel("RAM DRIVE");
-	f_mount(NULL, SDRAMDISKPath, 1);
+
+  HAL_LTDC_ConfigCLUT(&hltdc, L8Clut, 256, LTDC_LAYER_1);
+  HAL_LTDC_EnableCLUT(&hltdc, LTDC_LAYER_1);
+
+	// Bit    7  6  5  4  3  2  1  0
+	// Data   R  R  R  G  G  G  B  B
+	memset(VideoRam               , 0x10, 200 * 40);
+	memset(VideoRam + 200 * 40 * 1, 0x03, 200 * 40); // red
+	memset(VideoRam + 200 * 40 * 2, 0x0C, 200 * 40); // green
+	memset(VideoRam + 200 * 40 * 3, 0x30, 200 * 40); // blue
+	memset(VideoRam + 200 * 40 * 4, 0x3F, 200 * 40);
+	//HAL_LTDC_ConfigCLUT
+	//HAL_LTDC_EnableCLUT
+
+  //DMA2D_CLUTCfgTypeDef CLUTCfg;
+  //CLUTCfg.CLUTColorMode = DMA2D_CCM_ARGB8888;
+  //CLUTCfg.pCLUT = (uint32_t *)L8_CLUT_1;
+  //CLUTCfg.Size = 255;
+
+	//f_mount(&SDRAMDISKFatFS, SDRAMDISKPath, 0);
+	//char buf[512];
+	//f_mkfs(SDRAMDISKPath, FM_FAT, 512, buf, sizeof(buf));
+	//f_setlabel("RAM DRIVE");
+	//f_mount(NULL, SDRAMDISKPath, 1);
+  //memset((void*)0xD0000000, 1280 * 720 * 4, 0xFF);
   /* USER CODE END 2 */
 
   /* Infinite loop */
